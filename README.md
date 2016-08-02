@@ -19,5 +19,5 @@ The user is offered to select the card type and type in the card number, then th
 If the customer selects the card type which is not covered in the program; or if the number of the card is incorrect (e.g. the correct amount of digits in bank card is 16), the user is offered to try once again.
 
 ###Links used to write the code:
-[Luhn Algorithm wiki (English)](https://en.wikipedia.org/wiki/Luhn_algorithm)
-[Luhn Algorithm wiki (Russian)](https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%9B%D1%83%D0%BD%D0%B0)
+- [Luhn Algorithm wiki (English)](https://en.wikipedia.org/wiki/Luhn_algorithm)
+- [Luhn Algorithm wiki (Russian)](https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%9B%D1%83%D0%BD%D0%B0)
