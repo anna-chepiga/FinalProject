@@ -1,6 +1,6 @@
 
 public class Enum {
-    public enum PlasticCards {
+    public enum PlasticCard {
         BankCard,
         DiscountCard,
         IMEINumber,
