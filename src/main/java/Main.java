@@ -22,55 +22,65 @@ public class Main {
 
                 switch (card) {
                     case BankCard:
-                        cardNumber = getData(in);
+                        getNumberOfCard();
+
+                        cardNumber = Long.toString(in.nextLong());
                         numberOfNumeral = cardNumber.length();
 
                         if (numberOfNumeral == 16) {
-                            calculate(cardNumber);
+                            getCardData(cardNumber, card);
                         } else {
                             System.out.println("Number of numerals of BankCard must be 16!");
                         }
                         break;
 
                     case DiscountCard:
-                        cardNumber = getData(in);
+                        getNumberOfCard();
+
+                        cardNumber = Long.toString(in.nextLong());
                         numberOfNumeral = cardNumber.length();
 
                         if (numberOfNumeral == 13 || numberOfNumeral == 15 || numberOfNumeral == 16) {
-                            calculate(cardNumber);
+                            getCardData(cardNumber, card);
                         } else {
                             System.out.println("Number of numerals of DiscountCard must be 13, 15 or 16!");
                         }
                         break;
 
                     case IMEINumber:
-                        cardNumber = getData(in);
+                        getNumberOfCard();
+
+                        cardNumber = Long.toString(in.nextLong());
                         numberOfNumeral = cardNumber.length();
 
                         if (numberOfNumeral == 15) {
-                            calculate(cardNumber);
+                            getCardData(cardNumber, card);
                         } else {
                             System.out.println("Number of numerals of IMEINumber must be 15!");
                         }
                         break;
 
                     case SocialSecurityCode:
-                        cardNumber = getData(in);
+                        getNumberOfCard();
+
+                        cardNumber = Long.toString(in.nextLong());
                         numberOfNumeral = cardNumber.length();
 
                         if (numberOfNumeral == 9) {
-                            calculate(cardNumber);
+                            getCardData(cardNumber, card);
                         } else {
                             System.out.println("Number of numerals of SocialSecurityCode must be 9!");
                         }
                         break;
 
                     case NumberOfRailwayCarriage:
-                        cardNumber = getData(in);
+                        getNumberOfCard();
+
+                        cardNumber = Long.toString(in.nextLong());
                         numberOfNumeral = cardNumber.length();
 
                         if (numberOfNumeral == 8) {
-                            calculate(cardNumber);
+                            getCardData(cardNumber, card);
                         } else {
                             System.out.println("Number of numerals of NumberOfRailwayCarriage must be 8!");
                         }
@@ -80,31 +90,31 @@ public class Main {
                         System.exit(1);
                         break;
                 }
-                System.out.println("If you need to calculate number of another card, please, select kind of card\n" +
+                System.out.println("\nIf you need to calculate number of another card, please, select kind of card\n" +
                         "or enter OUT for exit.");
 
             } catch (IllegalArgumentException ex) {
                 System.out.println("[Error] You enter wrong information! Please, choose kind of card!");
             } catch (InputMismatchException ex) {
-                System.out.println("[Error] You enter wrong number of card! Please, enter numerals!");
+                System.out.println("[Error] Please, select kind of card again and enter numerals in number of card!");
             }
         }
     }
 
-    private static String getData(Scanner in) {
+    private static void getNumberOfCard() {
         System.out.println("Enter number of your card: ");
-        return Long.toString(in.nextLong());
     }
 
-    private static void calculate(String data) {
-        int result = LuhnAlgorithm.getSum(data);
-        int controlNumber = LuhnAlgorithm.getControlNumber(result);
+    private static void getCardData(String cardNumber, Enum.PlasticCard card) {
+        int result = LuhnAlorithm.getSum(cardNumber);
+        int controlNumber = LuhnAlorithm.getControlNumber(result);
+
+        Card newCard = new Card(card.name(), cardNumber, result, controlNumber);
 
         if (controlNumber == 0) {
-            System.out.println("Number of card is correct!");
+            System.out.println("Number of your " + card.name() + " is correct:\n" + newCard);
         } else {
-            System.out.println("Control sum of numerals of your card: " + result + ".\n" +
-                    "Control number of numerals of your card: " + controlNumber + ".");
+            System.out.println("Number of your " + card.name() + " isn't correct:\n" + newCard);
         }
     }
 }
