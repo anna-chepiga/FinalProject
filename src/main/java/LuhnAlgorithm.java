@@ -1,4 +1,4 @@
-public class LuhnAlorithm {
+public class LuhnAlgorithm {
     /**
      * Returns the sum of numerals sequence calculated based on Luhn algorithm.
      * The sum is presented as {@code Integer} number. The algorithm works as follows:
