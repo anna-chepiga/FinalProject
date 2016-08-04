@@ -38,7 +38,7 @@ public class LuhnAlgorithm {
      * Returns the control number. The method receives the sum of numerals sequence of a plastic card number.
      * If the sum is a multiple of 10, it may be affirmed that the numerals sequence was entered correctly.
      * If the sum is not a multiple of 10, the incorrect sequence was used.
-     * The control sum is calculated by retrieving the difference to the preceded number which is a multiple of 10.
+     * The control number is calculated by retrieving the difference to the preceded number which is a multiple of 10.
      *
      * @param sum the sum of plastic card numerals.
      * @return the value {@code 0} if the sum is multiple of 10;
