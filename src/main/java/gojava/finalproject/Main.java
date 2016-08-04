@@ -18,7 +18,7 @@ public class Main {
                 Scanner in = new Scanner(System.in);
                 String kindOfCard = in.next();
 
-                gojava.finalproject.Enum.PlasticCards card = gojava.finalproject.Enum.PlasticCards.valueOf(kindOfCard);
+                PlasticCards card = PlasticCards.valueOf(kindOfCard);
 
                 String cardNumber;
                 int numberOfNumeral;
@@ -36,7 +36,6 @@ public class Main {
                             System.out.println("Number of numerals of BankCard must be 16!");
                         }
                         break;
-
                     case DiscountCard:
                         getNumberOfCard();
 
@@ -49,7 +48,6 @@ public class Main {
                             System.out.println("Number of numerals of DiscountCard must be 13, 15 or 16!");
                         }
                         break;
-
                     case IMEINumber:
                         getNumberOfCard();
 
@@ -62,7 +60,6 @@ public class Main {
                             System.out.println("Number of numerals of IMEINumber must be 15!");
                         }
                         break;
-
                     case SocialSecurityCode:
                         getNumberOfCard();
 
@@ -75,7 +72,6 @@ public class Main {
                             System.out.println("Number of numerals of SocialSecurityCode must be 9!");
                         }
                         break;
-
                     case NumberOfRailwayCarriage:
                         getNumberOfCard();
 
@@ -88,14 +84,13 @@ public class Main {
                             System.out.println("Number of numerals of NumberOfRailwayCarriage must be 8!");
                         }
                         break;
-
                     case OUT:
                         System.exit(1);
                         break;
                 }
+
                 System.out.println("\nIf you need to calculate number of another card, please, select kind of card\n" +
                         "or enter OUT for exit.");
-
             } catch (IllegalArgumentException ex) {
                 System.out.println("[Error] You enter wrong information! Please, choose kind of card!");
             } catch (InputMismatchException ex) {
@@ -108,7 +103,7 @@ public class Main {
         System.out.println("Enter number of your card: ");
     }
 
-    private static void getCardData(String cardNumber, gojava.finalproject.Enum.PlasticCards card) {
+    private static void getCardData(String cardNumber, PlasticCards card) {
         int result = LuhnAlgorithm.getSum(cardNumber);
         int controlNumber = LuhnAlgorithm.getControlNumber(result);
 

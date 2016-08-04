@@ -1,7 +1,7 @@
 package gojava.finalproject;
 
-public class Enum {
-    public enum PlasticCards {
+
+enum PlasticCards {
         BankCard,
         DiscountCard,
         IMEINumber,
@@ -9,4 +9,4 @@ public class Enum {
         NumberOfRailwayCarriage,
         OUT
     }
-}
+
