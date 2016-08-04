@@ -19,5 +19,3 @@ public class Card {
                 " is " + sum + ", the control number is " + controlNumber + ".";
     }
 }
-
-
