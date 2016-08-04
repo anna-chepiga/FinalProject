@@ -1,4 +1,7 @@
+package gojava.finalproject;
+
 import java.io.IOException;
+import java.lang.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -15,7 +18,7 @@ public class Main {
                 Scanner in = new Scanner(System.in);
                 String kindOfCard = in.next();
 
-                Enum.PlasticCard card = Enum.PlasticCard.valueOf(kindOfCard);
+                gojava.finalproject.Enum.PlasticCards card = gojava.finalproject.Enum.PlasticCards.valueOf(kindOfCard);
 
                 String cardNumber;
                 int numberOfNumeral;
@@ -105,16 +108,16 @@ public class Main {
         System.out.println("Enter number of your card: ");
     }
 
-    private static void getCardData(String cardNumber, Enum.PlasticCard card) {
-        int result = LuhnAlorithm.getSum(cardNumber);
-        int controlNumber = LuhnAlorithm.getControlNumber(result);
+    private static void getCardData(String cardNumber, gojava.finalproject.Enum.PlasticCards card) {
+        int result = LuhnAlgorithm.getSum(cardNumber);
+        int controlNumber = LuhnAlgorithm.getControlNumber(result);
 
         Card newCard = new Card(card.name(), cardNumber, result, controlNumber);
 
         if (controlNumber == 0) {
-            System.out.println("Number of your " + card.name() + " is correct:\n" + newCard);
+            System.out.println("The number is correct:\n" + newCard);
         } else {
-            System.out.println("Number of your " + card.name() + " isn't correct:\n" + newCard);
+            System.out.println("The number isn't correct:\n" + newCard);
         }
     }
 }
