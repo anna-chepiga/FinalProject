@@ -1,6 +1,5 @@
 package gojava.finalproject;
 
-
 enum PlasticCards {
         BankCard,
         DiscountCard,
