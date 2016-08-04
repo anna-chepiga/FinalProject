@@ -1,3 +1,5 @@
+package gojava.finalproject;
+
 public class LuhnAlgorithm {
     /**
      * Returns the sum of numerals sequence calculated based on Luhn algorithm.

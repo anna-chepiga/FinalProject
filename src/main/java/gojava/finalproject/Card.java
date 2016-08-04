@@ -1,3 +1,5 @@
+package gojava.finalproject;
+
 public class Card {
     private String cardType;
     private String cardNumber;
