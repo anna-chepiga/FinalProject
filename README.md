@@ -15,7 +15,7 @@ The algorithm calculates the sum of the numbers in a particular card:
 In the code there are two methods: one calculates the sum and the second one retrieves the control number from this sum.
 
 ##How the program works
-The user is offered to select the card type and type in the card number, then the program calculates the sum and control number. The received data is saved in the object corresponding to the card type. These data are card type, its number, sum and control number, so each object contains the unique data about a particular selected card. 
+The user is offered to select the card type and type in the card number, then the program calculates the sum and control number. The received data is saved in the object corresponding to the card type. These data are card type, its number, sum and control number, so each object contains the unique data about a particular selected card.
 If the customer selects the card type which is not covered in the program; or if the number of the card is incorrect (e.g. the correct amount of digits in bank card is 16), the user is offered to try once again.
 
 ###Links used to write the code:
