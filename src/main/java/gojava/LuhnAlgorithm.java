@@ -6,7 +6,7 @@ public class LuhnAlgorithm {
     /**
      * Returns the sum of numerals sequence calculated based on Luhn algorithm.
      * The sum is presented as {@code Integer} number. The algorithm works as follows:
-     * The counting of the numerals begins from right to left.
+     * The counting of the numerals begins from left to right.
      * The odd numbers are included in the sum without changes.
      * The even numbers are doubled. If the result of multiplication is greater than 9,
      * the numbers in the result are added. Example: 8 * 2 = 16; 16 greater than 9. The end result is 1 + 6 = 7.
@@ -52,7 +52,7 @@ public class LuhnAlgorithm {
      * The sum of numbers left is calculated again and multiplied by 9. The last number in the result
      * should be the same as the control number. If both conditions are met, the card is considered valid.
      * Example: card number 5555550000000002, the full sum is 20, the sum of 15 first numbers
-     * multiplied by 10 is 162, control number is 2, conclusion: the card is valid.
+     * multiplied by 9 is 162, control number is 2, conclusion: the card is valid.
      * @param bankID the first 6 digits of the card number which is a unique bank ID
      *               containing information about bank branch/division/department and other special details
      *               about card issuer.
