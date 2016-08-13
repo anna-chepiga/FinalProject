@@ -72,9 +72,7 @@ public class LuhnAlgorithm {
             initCardNumberLong++;
             initCardNumber = String.format("%010d", initCardNumberLong);
 
-            if (initCardNumber.length() > 10) {
-                return null;
-            }
+            if (initCardNumber.length() > 10) break;
 
             int cardSum = calculateSum(initCardNumber);
             int finalSum = bankIDSum + cardSum;
