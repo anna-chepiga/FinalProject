@@ -1,3 +1,5 @@
+package gojava;
+
 import java.util.ArrayList;
 
 public class LuhnAlgorithm {
@@ -69,6 +71,10 @@ public class LuhnAlgorithm {
         do {
             initCardNumberLong++;
             initCardNumber = String.format("%010d", initCardNumberLong);
+
+            if (initCardNumber.length() > 10) {
+                return null;
+            }
 
             int cardSum = calculateSum(initCardNumber);
             int finalSum = bankIDSum + cardSum;
