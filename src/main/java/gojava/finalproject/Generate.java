@@ -7,7 +7,7 @@ public class Generate {
     private static Scanner in = new Scanner(System.in);
 
     public static String getNumeralsIssuingBank() {
-        System.out.println("For generation new cards enter first SIX numerals of Issuing Bank: ");
+        System.out.println("For generating new cards enter first SIX numerals of Issuing Bank: ");
 
         for (; ; ) {
             String bankID = in.next();
@@ -34,7 +34,7 @@ public class Generate {
     }
 
     public static int getCardAmount() {
-        System.out.println("Enter amount of cards you need to generate/need to have: ");
+        System.out.println("Enter amount of cards you need to generate: ");
 
         for (; ; ) {
             int amount = in.nextInt();
@@ -62,10 +62,8 @@ public class Generate {
             System.out.println("New numbers of cards: " + result);
         } else {
             System.out.println("It was not possible to generate " + amountOfCards + " cards. " +
-                    "There were no valid combinations for the amount of cards you need. " +
+                    "There were no more valid combinations for the amount of cards you need. " +
                     "New possible numbers of cards: " + result);
         }
     }
 }
-
-

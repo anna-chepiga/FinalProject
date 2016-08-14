@@ -41,4 +41,3 @@ public class Main {
                 "or enter OUT for exit.");
     }
 }
-

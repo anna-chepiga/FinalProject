@@ -7,4 +7,3 @@ enum PlasticCards {
         SocialSecurityCode,
         NumberOfRailwayCarriage
     }
-
