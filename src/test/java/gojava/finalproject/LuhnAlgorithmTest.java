@@ -1,63 +1,59 @@
 package gojava.finalproject;
 
-import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
 public class LuhnAlgorithmTest {
-
     @Test
-    public void getSumEvenNumber() throws Exception {
+    public void calculateSumEvenNumber() throws Exception {
         String evenNumber = "1111222233334444";
-        int actual = LuhnAlgorithm.getSum(evenNumber);
+        int actual = LuhnAlgorithm.calculateSum(evenNumber);
         int expected = 60;
 
         assertEquals(expected, actual);
     }
 
     @Test
-    public void getSumOddNumber() throws Exception {
+    public void calculateSumOddNumber() throws Exception {
         String oddNumber = "111122223333444";
-        int actual = LuhnAlgorithm.getSum(oddNumber);
-        int expected = 52;
-
-        assertEquals(expected, actual);
-    }
-
-    @Ignore("situation not possible because of code semantic in Main class")
-    @Test
-    public void getSumNoNumber() throws Exception {
-        String noNumber = "";
-        int actual = LuhnAlgorithm.getSum(noNumber);
-        int expected = 0;
-
-        assertEquals(expected, actual);
-    }
-
-    @Ignore("situation not possible because of InputMismatchException in Main class ")
-    @Test
-    public void getSumNotNumerals() throws Exception {
-        String noNumerals = "kk-oll;!kdya";
-        int actual = LuhnAlgorithm.getSum(noNumerals);
-        int expected = 237;
-
-        assertEquals(expected, actual);
-
-    }
-
-    @Test
-    public void getControlNumberZero() throws Exception {
-        int actual = LuhnAlgorithm.getControlNumber(40);
-        int expected = 0;
+        int actual = LuhnAlgorithm.calculateSum(oddNumber);
+        int expected = 56;
 
         assertEquals(expected, actual);
     }
 
     @Test
-    public void getControlNumberNotZero() throws Exception {
-        int actual = LuhnAlgorithm.getControlNumber(78);
-        int expected = 8;
+    public void isCardMod10True() throws Exception {
+        int cardSum = 50;
+        boolean actual = LuhnAlgorithm.isCardMod10(cardSum);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    public void isCardMod10False() throws Exception {
+        int cardSum = 55;
+        boolean actual = LuhnAlgorithm.isCardMod10(cardSum);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void generateCardsOK() throws Exception {
+        ArrayList<String> actual = LuhnAlgorithm.generateCards("555555", "0000000000", 3);
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList("5555550000000002", "5555550000000010", "5555550000000028"));
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void generateCardsNotEnough() throws Exception {
+        ArrayList<String> actual = LuhnAlgorithm.generateCards("333333", "9999999985", 10);
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList("3333339999999992"));
 
         assertEquals(expected, actual);
     }
