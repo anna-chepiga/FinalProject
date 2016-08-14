@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println(" Dear user!\n" +
-                "This program is used for validation a variety of identification numbers to protect against " +
-                "accidental errors; and for generation number of new card.\n" +
+                "This program is used for validating a variety of identification numbers to protect against " +
+                "accidental errors; and for generating number of new card.\n" +
                 "If you need to do this choose VALIDATE or GENERATE or enter OUT for exit:");
 
         Scanner in = new Scanner(System.in);
@@ -23,9 +23,9 @@ public class Main {
                 Validate.validateOfCard(cardEnum);
                 continueProgram();
             } else if (choice.equals("GENERATE")) {
-                String numeralsIB = Generate.numeralsIB();
-                String cardNumber = Generate.cardNumber();
-                int cardAmount = Generate.cardAmount();
+                String numeralsIB = Generate.getNumeralsIssuingBank();
+                String cardNumber = Generate.getCardNumber();
+                int cardAmount = Generate.getCardAmount();
                 Generate.generateNewCards(numeralsIB, cardNumber, cardAmount);
                 continueProgram();
             } else if (choice.equals("OUT")) {
@@ -37,7 +37,7 @@ public class Main {
     }
 
     public static void continueProgram() {
-        System.out.println("\nIf you need to continue use this program, choose VALIDATE or GENERATE\n" +
+        System.out.println("\nIf you need to continue using this program, choose VALIDATE or GENERATE\n" +
                 "or enter OUT for exit.");
     }
 }

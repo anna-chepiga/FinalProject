@@ -76,7 +76,7 @@ public class Validate {
         }
     }
 
-    public static String getNumberOfCard() {
+    private static String getNumberOfCard() {
         System.out.println("Enter number of your card: ");
 
         for (; ; ) {
@@ -90,7 +90,7 @@ public class Validate {
         }
     }
 
-    public static boolean checkDigits(String input) {
+    private static boolean checkDigits(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!Character.isDigit(input.charAt(i))) {
                 return false;
@@ -99,7 +99,7 @@ public class Validate {
         return true;
     }
 
-    public static void getCardData(String cardNumber, PlasticCards card) {
+    private static void getCardData(String cardNumber, PlasticCards card) {
         int result = LuhnAlgorithm.calculateSum(cardNumber);
 
         Card newCard = new Card(card.name(), cardNumber);
