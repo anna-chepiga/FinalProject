@@ -5,7 +5,5 @@ enum PlasticCards {
         DiscountCard,
         IMEINumber,
         SocialSecurityCode,
-        NumberOfRailwayCarriage,
-        OUT
+        NumberOfRailwayCarriage
     }
-
