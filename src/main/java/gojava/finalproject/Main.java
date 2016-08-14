@@ -2,34 +2,44 @@ package gojava.finalproject;
 
 import java.io.IOException;
 import java.lang.*;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    private static Validate validate = new Validate();
-    private static Generate generate = new Generate();
-
     public static void main(String[] args) throws IOException {
         System.out.println(" Dear user!\n" +
-                "This program used for validation a variety of identification number to protect against " +
-                "accidental errors and for generation number of new card.\n" +
+                "This program is used for validation a variety of identification numbers to protect against " +
+                "accidental errors; and for generation number of new card.\n" +
                 "If you need to do this choose VALIDATE or GENERATE or enter OUT for exit:");
 
-        try {
-            Scanner choice = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+
+
+        for (; ; ) {
+            String choice = in.next();
 
             if (choice.equals("VALIDATE")) {
-                validate.validateOfCard();
+                Validate.getParams();
+                String cardType = Validate.getCardType();
+                PlasticCards cardEnum = Validate.getEnum(cardType);
+                Validate.validateOfCard(cardEnum);
+                continueProgram();
             } else if (choice.equals("GENERATE")) {
-                generate.generateOfCard();
+                String numeralsIB = Generate.numeralsIB();
+                String cardNumber = Generate.cardNumber();
+                int cardAmount = Generate.cardAmount();
+                Generate.generateNewCards(numeralsIB, cardNumber, cardAmount);
+                continueProgram();
             } else if (choice.equals("OUT")) {
                 System.exit(1);
+            } else {
+                System.out.println("Choose VALIDATE or GENERATE or enter OUT for exit: ");
             }
-        } catch (IllegalArgumentException ex) {
-            System.out.println("[Error] You enter wrong information! Please, choose kind of card!");
-        } catch (InputMismatchException ex) {
-            System.out.println("[Error] Please, select kind of card again and enter numerals in number of card!");
         }
+    }
+
+    public static void continueProgram() {
+        System.out.println("\nIf you need to continue use this program, choose VALIDATE or GENERATE\n" +
+                "or enter OUT for exit.");
     }
 }
 

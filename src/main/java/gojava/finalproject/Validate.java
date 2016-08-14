@@ -3,23 +3,31 @@ package gojava.finalproject;
 import java.util.Scanner;
 
 public class Validate {
-    public static void validateOfCard() {
-        System.out.println(" For validation number of card choose kind of card:\n" +
+    private static Scanner in = new Scanner(System.in);
+
+    public static void getParams() {
+        System.out.println(" For validation of card number choose kind of card:\n" +
                 "BankCard,\nDiscountCard,\nIMEINumber,\nSocialSecurityCode,\nNumberOfRailwayCarriage");
+    }
 
-        for (; ; ) {
-            Scanner in = new Scanner(System.in);
-            String kindOfCard = in.next();
+    public static String getCardType() {
+        return in.next();
+    }
 
-            PlasticCards card = PlasticCards.valueOf(kindOfCard);
+    public static PlasticCards getEnum(String cardType) {
+        PlasticCards[] values = PlasticCards.values();
+        for (PlasticCards value : values) {
+            if (value.name().equals(cardType)) {
+                return PlasticCards.valueOf(cardType);
+            }
+        }
+        return null;
+    }
 
-            String cardNumber;
-            int numberOfNumeral;
-
-            getNumberOfCard();
-
-            cardNumber = Long.toString(in.nextLong());
-            numberOfNumeral = cardNumber.length();
+    public static void validateOfCard(PlasticCards card) {
+        if (card != null) {
+            String cardNumber = getNumberOfCard();
+            int numberOfNumeral = cardNumber.length();
 
             switch (card) {
                 case BankCard:
@@ -27,6 +35,7 @@ public class Validate {
                         getCardData(cardNumber, card);
                     } else {
                         System.out.println("Number of numerals of BankCard must be 16!");
+                        validateOfCard(PlasticCards.BankCard);
                     }
                     break;
                 case DiscountCard:
@@ -34,6 +43,7 @@ public class Validate {
                         getCardData(cardNumber, card);
                     } else {
                         System.out.println("Number of numerals of DiscountCard must be 13, 15 or 16!");
+                        validateOfCard(PlasticCards.DiscountCard);
                     }
                     break;
                 case IMEINumber:
@@ -41,6 +51,7 @@ public class Validate {
                         getCardData(cardNumber, card);
                     } else {
                         System.out.println("Number of numerals of IMEINumber must be 15!");
+                        validateOfCard(PlasticCards.IMEINumber);
                     }
                     break;
                 case SocialSecurityCode:
@@ -55,30 +66,32 @@ public class Validate {
                         getCardData(cardNumber, card);
                     } else {
                         System.out.println("Number of numerals of NumberOfRailwayCarriage must be 8!");
+                        validateOfCard(PlasticCards.NumberOfRailwayCarriage);
                     }
                     break;
             }
-
-            System.out.println("\nIf you need to calculate number of another card, please, select kind of card: ");
+        } else {
+            System.out.println("Enter correct card type!");
+            validateOfCard(getEnum(getCardType()));
         }
     }
 
-    private static void getNumberOfCard() {
+    public static String getNumberOfCard() {
         System.out.println("Enter number of your card: ");
+
+        Long inputNumber = in.nextLong();
+        return Long.toString(inputNumber);
     }
 
-    private static void getCardData(String cardNumber, PlasticCards card) {
+    public static void getCardData(String cardNumber, PlasticCards card) {
         int result = LuhnAlgorithm.calculateSum(cardNumber);
 
-        Card newCard = new Card(card.name(), cardNumber, result);
+        Card newCard = new Card(card.name(), cardNumber);
 
-        // в классе Card toString() поменять на
-        // "The number of your " + cardType + " with number " + cardNumber +" is " + sum;
-        // if работает как-то странно
-        if (LuhnAlgorithm.isCardMod10(0)) {
+        if (LuhnAlgorithm.isCardMod10(result)) {
             System.out.println(newCard + " is correct!");
-        } else  {
-            System.out.println(newCard + " card isn't correct!");
+        } else {
+            System.out.println(newCard + " isn't correct!");
         }
     }
 }
