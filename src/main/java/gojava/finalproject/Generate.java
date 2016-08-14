@@ -9,42 +9,58 @@ public class Generate {
     public static String numeralsIB() {
         System.out.println("For generation new cards enter first SIX numerals of Issuing Bank: ");
 
-        String bankID = in.next();
-        if (bankID.length() != 6) {
-            System.out.println("Number of numerals of Issuing Bank must be 6!");
-            numeralsIB();
+        for (; ; ) {
+            String bankID = in.next();
+            if (bankID.length() != 6 | !checkDigits(bankID)) {
+                System.out.println("Please make sure you enter 6 numerals and try again!");
+            } else {
+                return bankID;
+            }
         }
-        return bankID;
     }
 
     public static String cardNumber() {
         System.out.println("Enter TEN number of last issued bank card. " +
                 "If you create new cards, enter TEN zeros: ");
 
-        String initCardNumber = in.next();
-        if (initCardNumber.length() != 10) {
-            System.out.println("Number of numerals of bank card must be 10!");
-            cardNumber();
+        for (; ; ) {
+            String initCardNumber = in.next();
+            if (initCardNumber.length() != 10 | !checkDigits(initCardNumber)) {
+                System.out.println("Please make sure you enter 10 numerals and try again!");
+            } else {
+                return initCardNumber;
+            }
         }
-        return initCardNumber;
     }
 
     public static int cardAmount() {
         System.out.println("Enter amount of cards you need to generate/need to have: ");
 
-        int amountOfCards = in.nextInt();
-        if (amountOfCards < 0) {
-            System.out.println("Amount of cards must be positive number!");
-            cardAmount();
+        for (; ; ) {
+            int amount = in.nextInt();
+            if (amount < 0) {
+                System.out.println("Amount should be a positive number! Try again!");
+            } else {
+                return amount;
+            }
         }
-        return amountOfCards;
+    }
+
+    public static boolean checkDigits(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void generateNewCards(String bankID, String initCardNumber, int amountOfCards) {
         ArrayList<String> result = LuhnAlgorithm.generateCards(bankID, initCardNumber, amountOfCards);
 
-        System.out.println("New numbers of cards: " + result);
-        if (result.size() < amountOfCards) {
+        if (result.size() == amountOfCards) {
+            System.out.println("New numbers of cards: " + result);
+        } else {
             System.out.println("It was not possible to generate " + amountOfCards + " cards. " +
                     "There were no valid combinations for the amount of cards you need. " +
                     "New possible numbers of cards: " + result);

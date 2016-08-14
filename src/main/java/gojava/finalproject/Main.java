@@ -13,7 +13,6 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 
-
         for (; ; ) {
             String choice = in.next();
 

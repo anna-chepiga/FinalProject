@@ -79,8 +79,24 @@ public class Validate {
     public static String getNumberOfCard() {
         System.out.println("Enter number of your card: ");
 
-        Long inputNumber = in.nextLong();
-        return Long.toString(inputNumber);
+        for (; ; ) {
+            String number = in.next();
+
+            if (!checkDigits(number)) {
+                System.out.println("Make sure you enter only numbers!");
+            } else {
+                return number;
+            }
+        }
+    }
+
+    public static boolean checkDigits(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void getCardData(String cardNumber, PlasticCards card) {
